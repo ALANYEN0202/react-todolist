@@ -1,7 +1,7 @@
-import "./App.css";
-import styled from "styled-components";
-import TodoItem from "./TodoItem";
-import { useState } from "react";
+import "./App.css"
+import styled from "styled-components"
+import TodoItem from "./TodoItem"
+import {useState} from "react"
 const BlackTodoItem = styled(TodoItem)`
   background: black;
 `;
