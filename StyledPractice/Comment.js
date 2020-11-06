@@ -1,12 +1,9 @@
-import styled from 'styled-components'
-import SectionTitle from './SectionTitle'
-import Author1 from './public/img/p-1.png'
-import Author2 from './public/img/p-2.png'
-import Author3 from './public/img/p-3.png'
-import { MEDIA_QUERY_MD, MEDIA_QUERY_LG, Section } from './constants/style'
-
-
-
+import styled from "styled-components";
+import SectionTitle from "./SectionTitle";
+import Author1 from "./public/img/p-1.png";
+import Author2 from "./public/img/p-2.png";
+import Author3 from "./public/img/p-3.png";
+import { MEDIA_QUERY_MD, MEDIA_QUERY_LG, Section } from "./constants/style";
 
 const Comments = styled.div`
   display: flex;
@@ -14,7 +11,7 @@ const Comments = styled.div`
   ${MEDIA_QUERY_MD} {
     flex-direction: column;
   }
-`
+`;
 const CommentList = styled.div`
   position: relative;
   border-radius: 5px;
@@ -29,22 +26,24 @@ const CommentList = styled.div`
   ${MEDIA_QUERY_MD} {
     width: 100%;
     margin-left: 0px;
-    margin-top: 60px
+    margin-top: 60px;
   }
-`
+`;
 const Text = styled.div`
   padding: 93px 19px 39px;
-`
+`;
 function Img({ src }) {
   return (
-    <img src={src} style={{
-      position: 'absolute',
-      left: '35%',
-      top: '-31%',
-    }}/>
-  )
+    <img
+      src={src}
+      style={{
+        position: "absolute",
+        left: "35%",
+        top: "-31%",
+      }}
+    />
+  );
 }
-
 
 function Comment() {
   return (
@@ -55,7 +54,8 @@ function Comment() {
           <CommentList>
             <Img src={Author1} />
             <Text>
-              我一生疲於建國，去過日本，去過歐洲，卻從未到過台北101，也從來沒有吃過這麼好吃的東西...今天在時空旅行者的幫助下我終於吃到了...此生再無遺憾 QAQ!!
+              我一生疲於建國，去過日本，去過歐洲，卻從未到過台北101，也從來沒有吃過這麼好吃的東西...今天在時空旅行者的幫助下我終於吃到了...此生再無遺憾
+              QAQ!!
             </Text>
           </CommentList>
           <CommentList>

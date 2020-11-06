@@ -1,6 +1,5 @@
-import styled from 'styled-components'
-import { MEDIA_QUERY_MD, MEDIA_QUERY_LG } from './constants/style'
-
+import styled from "styled-components";
+import { MEDIA_QUERY_MD, MEDIA_QUERY_LG } from "./constants/style";
 
 const Navbar = styled.div`
   font-size: 18px;
@@ -27,10 +26,12 @@ const Navbar = styled.div`
   ${MEDIA_QUERY_MD} {
     margin: 0 auto;
   }
-`
+`;
 
 export default function NavbarSingle({ as, href, content }) {
   return (
-    <Navbar as={as} href={href}>{content}</Navbar>
+    <Navbar as={as} href={href}>
+      {content}
+    </Navbar>
   );
 }
