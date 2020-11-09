@@ -7,6 +7,7 @@ const TodoItemWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 8px 16px;
+  width: 70%;
   border: 1px solid black;
   & + & {
     margin-top: 5px;
@@ -51,7 +52,6 @@ const RedButton = styled(Button)`
 `;
 
 export default function TodoItem({
-  className,
   size,
   todo,
   handleDeleteTodo,
@@ -67,9 +67,8 @@ export default function TodoItem({
 
   return (
     <TodoItemWrapper
-      className={className}
+      className={`todoList ${todo.isDone ? "completed" : ""}`}
       data-id={todo.id}
-      data-isDone={todo.isDone}
     >
       <TodoContent $isDone={todo.isDone} size={size}>
         {todo.content}

@@ -12,6 +12,8 @@ function App() {
 
   const [value, setValue] = useState("");
 
+  const [filter, setFilter] = useState("all");
+
   const handleInputChange = (e) => {
     setValue(e.target.value);
   };
@@ -45,6 +47,59 @@ function App() {
     );
   };
 
+  const handleFilterAll = () => {
+    setFilter("all");
+  };
+
+  const handleFilterDone = () => {
+    setFilter("done");
+  };
+
+  const handleFilterNotDone = () => {
+    setFilter("notDone");
+  };
+
+  const handleClearAll = () => {
+    setTodos([]);
+  };
+
+  function isFilterState(filter, todos) {
+    if (filter === "all") {
+      return todos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          handleDeleteTodo={handleDeleteTodo}
+          handleToggleIsDone={handleToggleIsDone}
+        />
+      ));
+    }
+    if (filter === "done") {
+      return todos
+        .filter((todo) => todo.isDone)
+        .map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            handleDeleteTodo={handleDeleteTodo}
+            handleToggleIsDone={handleToggleIsDone}
+          />
+        ));
+    }
+    if (filter === "notDone") {
+      return todos
+        .filter((todo) => !todo.isDone)
+        .map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            handleDeleteTodo={handleDeleteTodo}
+            handleToggleIsDone={handleToggleIsDone}
+          />
+        ));
+    }
+  }
+
   return (
     <div className="App">
       <input
@@ -54,14 +109,11 @@ function App() {
         onChange={handleInputChange}
       />
       <button onClick={handleButtonClick}>Add todo</button>
-      {todos.map((todo) => (
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          handleDeleteTodo={handleDeleteTodo}
-          handleToggleIsDone={handleToggleIsDone}
-        />
-      ))}
+      <button onClick={handleFilterAll}>All</button>
+      <button onClick={handleFilterDone}>Done</button>
+      <button onClick={handleFilterNotDone}>Not Done</button>
+      <button onClick={handleClearAll}>Clear All</button>
+      {isFilterState(filter, todos)}
     </div>
   );
 }
