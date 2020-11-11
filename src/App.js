@@ -1,18 +1,38 @@
 import "./App.css";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
-import { useState } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
+
 const BlackTodoItem = styled(TodoItem)`
   background: black;
 `;
 
+function writeTodosToLocalStorage(todos) {
+  window.localStorage.setItem("todos", JSON.stringify(todos));
+}
+
 let id = 1;
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    let todoData = window.localStorage.getItem("todos") || "";
+    if (todoData) {
+      todoData = JSON.parse(todoData);
+      if (todoData.length > 0) {
+        id = todoData[0].id + 1;
+      }
+    } else {
+      todoData = [];
+    }
+    return todoData;
+  });
 
   const [value, setValue] = useState("");
 
   const [filter, setFilter] = useState("all");
+
+  useEffect(() => {
+    writeTodosToLocalStorage(todos);
+  }, [todos]);
 
   const handleInputChange = (e) => {
     setValue(e.target.value);
