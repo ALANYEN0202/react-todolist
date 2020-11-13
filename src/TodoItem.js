@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { MEDIA_QUERY_MD } from "./constants/style";
+import React from "react";
 
 const TodoItemWrapper = styled.div`
   display: flex;
@@ -50,12 +51,44 @@ const RedButton = styled(Button)`
   color: red;
 `;
 
-export default function TodoItem({
-  size,
-  todo,
-  handleDeleteTodo,
-  handleToggleIsDone,
-}) {
+export default class TodoItemC extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleToggleClick = this.handleToggleClick.bind(this);
+    this.handleDeleteClick = this.handleDeleteClick.bind(this);
+  }
+  handleToggleClick() {
+    const { handleToggleIsDone, todo } = this.props;
+    handleToggleIsDone(todo.id);
+  }
+
+  handleDeleteClick() {
+    const { handleDeleteTodo, todo } = this.props;
+    handleDeleteTodo(todo.id);
+  }
+  render() {
+    const { size, todo, handleDeleteTodo, handleToggleIsDone } = this.props;
+    return (
+      <TodoItemWrapper
+        className={`todoList ${todo.isDone ? "completed" : ""}`}
+        data-id={todo.id}
+      >
+        <TodoContent $isDone={todo.isDone} size={size}>
+          {todo.content}
+        </TodoContent>
+        <TodoButtonWrapper>
+          <Button onClick={this.handleToggleClick}>
+            {todo.isDone ? "未完成" : "已完成"}
+          </Button>
+          <RedButton onClick={this.handleDeleteClick}>刪除</RedButton>
+        </TodoButtonWrapper>
+      </TodoItemWrapper>
+    );
+  }
+}
+
+function TodoItem({ size, todo, handleDeleteTodo, handleToggleIsDone }) {
   const handleToggleClick = () => {
     handleToggleIsDone(todo.id);
   };

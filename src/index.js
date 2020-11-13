@@ -2,8 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import Counter from "./Counter";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "styled-components";
+import Demo from "./Demo";
 const theme = {
   colors: {
     primary_300: "#ff7979",
@@ -14,7 +16,7 @@ const theme = {
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <App />
+    <Demo />
   </ThemeProvider>,
   document.getElementById("root")
 );
