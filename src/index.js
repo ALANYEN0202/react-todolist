@@ -2,15 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import Counter from "./Counter";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "styled-components";
-import Demo from "./Demo";
 const theme = {
   colors: {
-    primary_300: "#ff7979",
-    primary_400: "#e33e3e",
-    primary_500: "#af0505",
+    primary_green: "#00AA00",
+    primary_red: "#FF0000",
+    primary_white: "#FFFFFF",
   },
 };
 
