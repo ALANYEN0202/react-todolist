@@ -5,15 +5,11 @@ import useTodos from "./useTodos";
 
 function App() {
   const {
-    id,
     todos,
-    setTodos,
     value,
-    setValue,
     handleChange,
     handleButtonClick,
     filter,
-    setFilter,
     handleFilterAll,
     handleFilterDone,
     handleFilterNotDone,

@@ -1,6 +1,5 @@
 import React, { useState, useContext, createContext } from "react";
 
-const TitleContext = createContext();
 const ColorContext = createContext();
 
 function DemoInnerBoxContext() {
